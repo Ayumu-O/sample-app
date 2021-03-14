@@ -1,12 +1,11 @@
-<div>
-  <h1>Welcome to the Sample App</h1>
-  <h2>
-    This is the home page for the
-    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-  
-  <%= link_to "Sing up now!", signup_path %>
-  <%= link_to "Log in now!", login_path %>
-  <%= link_to "Log out now!", logout_path %>
-</div>
+<h1>StaticPage#home</h1>
+<p>Hello World!</p>
+
+<% if user_signed_in? %>
+  <%= link_to "ログアウトする", logout_path %>
+  <%= link_to "登録情報を変更する", edit_user_registration_path %>
+  <%= link_to "ユーザ削除", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+<% else %>
+  <%= link_to "新規登録する", signup_path %>
+  <%= link_to "ログインする", login_path %>
+<% end %>
