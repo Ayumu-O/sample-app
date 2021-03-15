@@ -31,7 +31,7 @@ gem 'devise'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails', '~> 4.0'
 end
 
 group :development, :test do
