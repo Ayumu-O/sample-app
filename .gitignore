@@ -34,3 +34,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+test/controllers/static_pages_controller_test.rb
+.irb_history
