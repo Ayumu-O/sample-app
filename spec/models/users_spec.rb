@@ -24,22 +24,12 @@ RSpec.describe User, type: :model do
   it "is invalid without password" do
     @user.password = nil
     @user.valid?
-    expect(user.errors[:password]).to include("can't be blank")
+    expect(@user.errors[:password]).to include("can't be blank")
   end
 
   it "is invalid with a duplicate email" do
-    User.create(
-      name: "チュートリアル　太郎",
-      email: "test2@test.com",
-      password: "password",
-    )
-
-    user = User.new(
-      name: "チュートリアル　次郎",
-      email: "test2@test.com",
-      password: "password",
-    )
-
-    expect(user.errors[:email]).to include("has already been taken")
+    duplicate_user = @user.dup
+    @user.save
+    expect(duplicate_user.errors[:email]).to include("has already been taken")
   end
 end
