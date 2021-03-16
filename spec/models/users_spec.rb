@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     @user = build(:user)
   end
 
-  ii "is valid with a name, email, password" do
+  it "is valid with a name, email, password" do
     expect(@user).to be_valid
   end
 
@@ -29,15 +29,15 @@ RSpec.describe User, type: :model do
 
   it "is invalid with a duplicate email" do
     User.create(
-      name: "チュートリアル　太郎"
-      email: "test2@test.com"
-      password: "password"
+      name: "チュートリアル　太郎",
+      email: "test2@test.com",
+      password: "password",
     )
 
     user = User.new(
-      name: "チュートリアル　次郎"
-      email: "test2@test.com"
-      password: "password"
+      name: "チュートリアル　次郎",
+      email: "test2@test.com",
+      password: "password",
     )
 
     expect(user.errors[:email]).to include("has already been taken")

@@ -4,4 +4,4 @@ FactoryBot.define do
       sequence(:email) {|i| "email#{i}@sample.com" }
       password { "password" }
     end
-  en
+end
