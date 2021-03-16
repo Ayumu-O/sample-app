@@ -35,5 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-test/controllers/static_pages_controller_test.rb
+test
 .irb_history

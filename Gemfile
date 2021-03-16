@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0'
+  gem 'factory_bot_rails'
 end
 
 group :development, :test do
