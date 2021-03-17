@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :user_bands
+  
   validates :name, presence: true
   
   # Include default devise modules. Others available are:

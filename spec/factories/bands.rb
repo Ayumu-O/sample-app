@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :band do
-    name { "MyString" }
+    name { "test_band" }
   end
 end
