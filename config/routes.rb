@@ -8,10 +8,14 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "signup", :to => "users/registrations#new"
-    get "user/:id", :to => "users/registrations#detail"
+    get "users/:id", :to => "users/registrations#detail"
+    get "index", :to => "users/registrations#index"
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
   end
 
-  resources :posts, only: [:index, :show, :create]
+  resources :posts, only: [:index, :show, :create] do
+    resources :comments, only: [:create]
+  end
+
 end
