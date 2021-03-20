@@ -15,11 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # ここのコメントアウトを外してリダイレクト先を指定
   # ルートパス名でも良い
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    ""
+  def after_sign_up_path_for(_resource)
+    ''
     # "/user/#{current_user.id}"
   end
-  
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
