@@ -1,20 +1,19 @@
-<h1>Posts#show</h1>
-<h3><%= @post.user.email %></h3>
-<h3><%= @post.content %></h3>
+<h1>投稿詳細（Posts#show）</h1>
+<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+    <a href="/users/<%= @post.user.id %>">@<%= @post.user.name %></a>
+    <h3><%= @post.content %></h3>
+</div>
 
-<h2>コメント一覧</h2>
-<% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
+<div class="row">
+    <h2>コメント一覧</h2>
+    <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+    </div>
     <hr>
-  </div>
-<% end %>
-
-<%= form_for [@post, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
+    <% if user_signed_in? %>
+        <h3>コメントを投稿する</h3>
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+    <% end %>
+</div>
 
 <%= link_to "ホームへ戻る", root_path %>

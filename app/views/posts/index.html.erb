@@ -1,4 +1,4 @@
-<h1>Posts#index</h1>
+<h1>ホーム（Posts#index）</h1>
 <% if user_signed_in? %>
     <p>あなたはログインしています！</p>
     <h2>投稿する</h2>
@@ -9,8 +9,10 @@
     <hr>
     <h2>投稿一覧</h2>
     <% @posts.each do |post| %>
-        <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>
-        <p><a href="/posts/<%= post.id %>"><%= post.content %></a></p>
+        <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+            <a href="/users/<%= post.user.id %>">@<%= post.user.name %></a>
+            <h4><a href="/posts/<%= post.id %>"><%= post.content %></a></h4>
+        </div>
     <% end %>
     <hr>
     <%= link_to "ログアウトする", logout_path %>

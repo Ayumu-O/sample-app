@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'logout', to: 'users/sessions#destroy'
   end
 
-  resources :posts, only: %i[index show create] do
-    resources :comments, only: [:create]
+  resources :posts, only: %i[index show create new] do
+    resources :comments, only: [:create, :destroy]
   end
 end
