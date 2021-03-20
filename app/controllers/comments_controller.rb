@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    render :index
+    render 'remote_js.js.erb'
   end
 
   def destroy
@@ -15,6 +15,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :post_id, :user_id)
+    params.require(:comment).permit(:content, :post_id).merge(user_id: current_user.id)
   end
 end

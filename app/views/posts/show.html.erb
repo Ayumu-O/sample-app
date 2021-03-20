@@ -4,16 +4,6 @@
     <h3><%= @post.content %></h3>
 </div>
 
-<div class="row">
-    <h2>コメント一覧</h2>
-    <div id="comments_area">
-        <%= render partial: 'comments/index', locals: { comments: @comments } %>
-    </div>
-    <hr>
-    <% if user_signed_in? %>
-        <h3>コメントを投稿する</h3>
-        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-    <% end %>
-</div>
+<%= render partial: 'comments/test' %>
 
 <%= link_to "ホームへ戻る", root_path %>
