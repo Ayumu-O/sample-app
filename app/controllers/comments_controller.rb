@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    render 'remote_js.js.erb'
+    if @comment.save
+      render 'remote_js.js.erb'
+    end
   end
 
   def destroy
