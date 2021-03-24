@@ -1,0 +1,22 @@
+<h1>ホーム（Posts#home）</h1>
+<% if user_signed_in? %>
+    <p>あなたはログインしています！</p>
+    <h2>投稿する</h2>
+    <%= form_for @post , remote: true do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit %>
+    <% end %>
+    <hr>
+    <h2>投稿一覧</h2>
+    <div id="posts_area">
+        <%= render partial: 'posts/index', locals: { posts: @posts } %>
+    </div>
+    <hr>
+    <%= link_to "ログアウトする", logout_path %>
+    <%= link_to "登録情報を変更する", edit_user_registration_path %>
+    <%= link_to "ユーザ削除", user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+<% else %>
+    <p>ログインしてください！</p>
+    <%= link_to "新規登録する", signup_path %>
+    <%= link_to "ログインする", login_path %>
+<% end %>
