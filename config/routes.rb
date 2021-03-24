@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root 'posts#home'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'logout', to: 'users/sessions#destroy'
   end
 
-  resources :posts, only: %i[index show create new] do
+  resources :posts, only: %i[home show create destroy] do
     resources :comments, only: [:create, :destroy]
   end
 end

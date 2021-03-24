@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[show create]
-  def index
-    @posts = Post.all
+  def home
+    @posts = Post.all.order(created_at: :desc)
     @post = Post.new
   end
 
@@ -15,9 +15,14 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_back(fallback_location: root_path)
+      render 'remote_js.js.erb'
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      render 'remote_js.js.erb'
     end
   end
 

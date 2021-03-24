@@ -1,2 +1,2 @@
-$("#comments_area").html("<%= j(render partial: 'comments/index', locals: { comments: @comment.post.comments }) %>");
+$("#comments_area").html("<%= j(render partial: 'comments/index', locals: { comments: @comment.post.comments.order(created_at: :desc) }) %>");
 $("textarea").val('');

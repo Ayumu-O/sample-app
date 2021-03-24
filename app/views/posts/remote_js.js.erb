@@ -1,0 +1,2 @@
+$("#posts_area").html("<%= j(render partial: 'posts/index', locals: { posts: Post.all.order(created_at: :desc) }) %>");
+$("textarea").val('');

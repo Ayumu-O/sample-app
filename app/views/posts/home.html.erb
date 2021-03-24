@@ -1,19 +1,16 @@
-<h1>ホーム（Posts#index）</h1>
+<h1>ホーム（Posts#home）</h1>
 <% if user_signed_in? %>
     <p>あなたはログインしています！</p>
     <h2>投稿する</h2>
-    <%= form_for @post do |f| %>
-        <%= f.text_field :content %>
+    <%= form_for @post , remote: true do |f| %>
+        <%= f.text_area :content %>
         <%= f.submit %>
     <% end %>
     <hr>
     <h2>投稿一覧</h2>
-    <% @posts.each do |post| %>
-        <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
-            <a href="/users/<%= post.user.id %>">@<%= post.user.name %></a>
-            <h4><a href="/posts/<%= post.id %>"><%= post.content %></a></h4>
-        </div>
-    <% end %>
+    <div id="posts_area">
+        <%= render partial: 'posts/index', locals: { posts: @posts } %>
+    </div>
     <hr>
     <%= link_to "ログアウトする", logout_path %>
     <%= link_to "登録情報を変更する", edit_user_registration_path %>
