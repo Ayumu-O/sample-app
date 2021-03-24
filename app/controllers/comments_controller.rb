@@ -10,8 +10,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    render :index
+    if @comment.destroy
+      render 'remote_js.js.erb'
+    end
   end
 
   private
